@@ -3,8 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <script>
+
+        //scissors
+        var userChoice = prompt("Вы вибираете камень, бумага или ножницы?");
+        var computerChoice = Math.random();
+        computerChoice < 0.34 ? computerChoice = 'камень' : computerChoice > 0.34 && computerChoice < 0.64 ?
+            computerChoice = 'бумага' : computerChoice = 'ножницы';
+        var user = userChoice;
+        var comp = computerChoice;
+
+        if (user === comp) {
+            alert("Ничья!");
+        } else if (user === "камень") {
+            if (comp === "ножницы") {
+                alert("Камень выиграл");
+            } else {
+                alert("Бумага выиграла");
+            }
+        } else if (user === "бумага") {
+            if (comp === "камень") {
+                alert("Бумага выиграла");
+            } else {
+                alert("Ножнецы выиграли");
+            }
+        } else if (user === "ножницы") {
+            if (comp === "бумага") {
+                alert("Ножнецы выиграли");
+            } else {
+                alert("Камень выиграл");
+            }
+        }
+        alert("Компьютер загадал " + computerChoice);
+
+        //blue belt
+        var ratios = {
+            usd: 26.6,
+            eur: 31,
+            rub: 0.43,
+            CNY: 6.66
+        };
+        var sum = prompt('Сумма');
+        var val = prompt('Валюта');
+        var ratio = ratios[val];
+        alert(ratio * sum);
+
+    </script>
 </head>
 <body>
-  <!--in progress-->
 </body>
 </html>
