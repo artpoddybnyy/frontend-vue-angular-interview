@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        input {
+            display: block;
+        }
+
+        div {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        form {
+            margin-left: 30%;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready( () => {
+        let calc = function (numberOfApartment, numberOfFloors, numberOfApartmentsPerFloor) {
+            let numberOfFlats = numberOfFloors * numberOfApartmentsPerFloor;
+            let entrance = numberOfApartment / numberOfFlats;
+            if (numberOfApartment % numberOfFlats !== 0) {
+                entrance++;
+            }
+            let res = numberOfApartment % numberOfApartmentsPerFloor;
+            let res3 = numberOfApartment / numberOfApartmentsPerFloor;
+            if (res % numberOfFloors !== 0) {
+                res3++;
+            }
+            let res2 = res3 % numberOfFloors;
+            if (res2 ===0){
+                res2 = numberOfFloors;
+            }
+
+
+            $('#result').append('<h1>' + 'Подъезд = ' + parseInt(entrance) + ' Этаж = ' + parseInt(res2) + '</h1>');
+        };
+        $('#calc').click((event) => {
+            let numberOfApartment = $('#numberOfApartment').val();
+            let numberOfFloors = $('#numberOfFloors').val();
+            let numberOfApartmentsPerFloor = $('#numberOfApartmentsPerFloor').val();
+            calc(numberOfApartment, numberOfFloors, numberOfApartmentsPerFloor);
+            event.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body>
+<div>
+<form>
+        <label for="numberOfApartment">№ Квартиры</label>
+        <input type="text" id="numberOfApartment"  >
+        <label for="numberOfFloors">Количество этажей</label>
+        <input type="text" id="numberOfFloors"  >
+        <label for="numberOfApartmentsPerFloor">Количество квартир на этаже</label>
+        <input type="text" id="numberOfApartmentsPerFloor">
+        <button id="calc">Посчитать</button>
+</form>
+<div id="result"></div>
+</div>
+</body>
+</html>

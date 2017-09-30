@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        //        html tree
+
+        var html = {
+            tagName: 'body',
+            paired: true,
+            nestedTags: [
+                {
+                    tagName: 'div',
+                    paired: true,
+                    nestedTags: [{
+                        tagName: 'span',
+                        paired: true,
+                        content: 'Enter data',
+                    },
+                        {
+                            tagName: 'br',
+                            paired: false,
+                        },
+                        {
+                            tagName: 'input',
+                            paired: false,
+                            attrs: {
+                                id: 'name',
+                                type: 'text'
+                            },
+                        },
+                        {
+                            tagName: 'input',
+                            paired: false,
+                            attrs: {
+                                id: 'surename',
+                                type: 'text'
+                            },
+                        }
+                    ]
+                },
+                {
+                    tagName: 'div',
+                    paired: true,
+                    nestedTags: [{
+                        tagName: 'button',
+                        paired: true,
+                        attrs: {
+                            id: 'ok',
+                        },
+                        content: 'Ok'
+                    },
+                        {
+                            tagName: 'button',
+                            paired: true,
+                            attrs: {
+                                id: 'cancel',
+                            },
+                            content: 'Cancel'
+                        }]
+                }]
+        };
+
+        //        declarative fields
+        var notebook = {
+            brand: prompt("Enter brand"),
+            type: prompt("Enter a type"),
+            model: prompt("Enter a model"),
+            ram: +prompt("Enter a ram size"),
+            size: +prompt("Enter a size"),
+            weight: +prompt("Enter a weight"),
+            resolution: {
+                width: +prompt("Enter a width"),
+                height: +prompt("Enter a width")
+            }
+        };
+        var phone = {
+            brand: prompt("Enter brand"),
+            model: prompt("Enter a model"),
+            ram: +prompt("Enter a ram size"),
+            color: prompt("Enter a color")
+        };
+
+        var person = {
+            name: prompt("Enter name"),
+            surname: prompt("Enter surname"),
+            married: confirm('Is married ?'),
+        };
+
+        //        object links
+        person.phone = phone;
+        person.notebook = notebook;
+        phone.owner = person;
+        notebook.owner = person;
+
+        //        imperative array fill 3
+        var imperArr = [];
+        imperArr[0] = prompt('enter number');
+        imperArr[1] = prompt('enter number');
+        imperArr[2] = prompt('enter number');
+
+        //        while confirm
+        while (confirm()) {
+
+        }
+
+        //        array fill
+        var val = true;
+        var arrFromPromt = [];
+        while (val) {
+            val = prompt();
+            if (val === null) {
+                break;
+            }
+            arrFromPromt.push(val);
+        }
+
+        //        array fill nopush
+        var index = 0;
+        while (val) {
+            val = prompt();
+            if (val === null) {
+                break;
+            }
+            arrFromPromt[index++] = val;
+        }
+        //        infinite probability
+        var iterCounter = 0;
+        while (true) {
+            if (Math.random() > 0.9) {
+                alert(iterCounter);
+                break;
+            }
+            iterCounter++;
+        }
+        //        empty loop
+        while (prompt() && !prompt()) {
+
+        }
+
+
+        //        progression sum
+        for (var i = 0, sum = 1; i < 100; i++) {
+            sum += 3;
+        }
+
+        //        chess one line
+        for (var u = 0, str = ''; u < 11; u++) {
+            str += ' # ';
+        }
+
+        //        numbers
+
+        for (var x = 0; x < 10; x++) {
+            var strCount = '';
+            for (var q = 0; q < 10 ; q++) {
+                strCount += q;
+            }
+            console.log(strCount);
+        }
+
+        //   chess
+
+
+
+
+
+//        multiply table
+       var arr = [];
+        for (let  i = 2; i < 10; i++){
+            arr[i] = [];
+            for (let  j = 2; j < 10; j++){
+                arr[i][j] = i*j;
+            }
+        }
+//        matrix to html table
+        function makeTable(arr) {
+            var table = document.createElement('table');
+            for (var i = 2; i < arr.length; i++) {
+                var row = document.createElement('tr');
+                for (var j = 2; j < arr[i].length; j++) {
+                    var cell = document.createElement('td');
+                    cell.textContent = arr[i][j];
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+            return table;
+        }
+
+
+//        blue belt
+                for (let i = 0; i < 7; i++) {
+                    for (let j = 0; j < 6 - i; j++) {
+                        document.write('.');
+                    }
+                    for (let k = 0; k <= i; k++) {
+                        document.write('#');
+                    }
+                    for (let h = 0; h < 6 - i; h++) {
+                        document.write('.');
+                    }
+                    document.write('<br/>');
+                }
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
