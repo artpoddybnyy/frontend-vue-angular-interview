@@ -17,6 +17,49 @@
         } else {
             document.write("<div style='background-color: gray;'>Я не понял</div>");
         }
+
+        //        triple prompt
+         var family = prompt('Фамилия') || 'Ivanov';
+        var name = prompt('Имя') || 'Ivan';
+        var secondname = prompt('Отчество') || 'Ivanovich';
+        alert([family, ' ', name, ' ', secondname]);
+
+//        default: if
+        if (!family){
+            family = 'Ivanov';
+        }
+        if (!name){
+            name = 'Ivan';
+        }
+        if (!secondname){
+            secondname = 'Ivanovich';
+        }
+        alert([family, ' ', name, ' ', secondname]);
+
+//        login and password
+
+        var login = 'admin';
+        var pass = 'qwerty';
+        if (prompt('Login') === login){
+            if (prompt('Password') === pass){
+                alert('Ok')
+            } else alert('Not ok');
+        } else alert('Not ok');
+
+//        currency calc
+//        currency calc: improved
+        var valCalc = prompt('Валюта?');
+        var quantity = prompt('Количество?');
+        switch (valCalc.toLowerCase()){
+            case 'usd' : quantity = quantity * 26.6;
+                break;
+            case 'eur' :quantity = quantity * 30.1;
+            break;
+            default: quantity
+        }
+        alert(quantity);
+
+
         //scissors
         var userChoice = prompt("Вы вибираете камень, бумага или ножницы?");
         var computerChoice = Math.random();

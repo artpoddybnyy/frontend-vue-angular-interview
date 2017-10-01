@@ -205,6 +205,22 @@
                     document.write('<br/>');
                 }
 
+//black belt не работает
+        var predictArray = [-1];
+        var historyUser = [1,1,1,1];
+        var userNum = prompt('Enter the number "0" or "1"');
+
+        while (userNum !== null){
+            var rendomnum = Math.random() > 0.5 ? rendomnum = 1 : rendomnum = 0;
+            historyUser.push(userNum);
+            historyUser.shift();
+            predictArray[historyUser] = [userNum];
+            userNum = prompt('Enter the number "0" or "1"');
+            for (var i = 0; i < predictArray.length; i++) {
+                var nums = predictArray[i];
+            }
+            console.log(nums);
+        }
 
 
     </script>
