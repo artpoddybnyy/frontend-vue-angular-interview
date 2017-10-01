@@ -100,7 +100,7 @@
         };
         var sum = prompt('Сумма');
         var val = prompt('Валюта');
-        var ratio = ratios[val];
+        var ratio = ratios[val.toLowerCase()];
         alert(ratio * sum);
 
     </script>
