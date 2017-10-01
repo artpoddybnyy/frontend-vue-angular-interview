@@ -6,6 +6,17 @@
 
     <script>
 
+        //        switch: if
+        var color = prompt("Введите цвет", "");
+        if (color === "red" || color === 'black') {
+            document.write("<div style='background-color: red;'>красный</div>");
+            document.write("<div style='background-color: black; color: white;'>черный</div>");
+        } else if (color === "blue" || color === 'green') {
+            document.write("<div style='background-color: blue;'>синий</div>");
+            document.write("<div style='background-color: green;'>зеленый</div>");
+        } else {
+            document.write("<div style='background-color: gray;'>Я не понял</div>");
+        }
         //scissors
         var userChoice = prompt("Вы вибираете камень, бумага или ножницы?");
         var computerChoice = Math.random();
