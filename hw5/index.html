@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <script>
+
+        function intRandom(a, b) {
+            return Math.floor(Math.random() * (b - a)) + a;
+        }
+
+        function sum() {
+            var res = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                res = res + arguments[i];
+            }
+            return res/arguments.length;
+        }
+
+        //blue belt
+        var person = {};
+        function inputPerson() {
+            var res = prompt('Введите Фамилию Имя и Отчество').split(' ');
+            person.famaly = res[0];
+            person.name = res[1];
+            person.surname = res[2];
+            return person;
+        }
+
+        //brown belt
+        var inputStructure = [
+            {prompt: "Введите Фамилию",
+                default_: "",
+                field: "surname"
+            },
+            {prompt: "Введите Имя",
+                default_: "",
+                field: "name"
+            },
+            {prompt: "Введите Отчество",
+                default_: "",
+                field: "fatherName"
+            },
+            {prompt: "Введите возраст",
+                default_: "0",
+                field: "age"
+            }
+        ];
+
+        function inputAnything(params) {
+            var result = {};
+            for (var i = 0; i < params.length; i++) {
+                result[params[i].field] = prompt(params[i].prompt, params[i].default_);
+            }
+            return result;
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>
