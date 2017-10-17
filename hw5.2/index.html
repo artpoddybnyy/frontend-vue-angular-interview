@@ -5,7 +5,7 @@
     <title>Title</title>
 
     <script>
-//sort
+        //sort
         var persons = [
             {name: "Иван", age: 17},
             {name: "Мария", age: 35},
@@ -13,27 +13,26 @@
             {name: "Яков", age: 12}
         ];
 
-       function sortPersones(person, param, order) {
-           person.sort(function (a, b) {
-               if (!order){
-                  return a[param] > b[param] ? 1: -1;
-               } else {
-                   return a[param] > b[param] ? -1: 1;
-               }
-       });
-           return person;
-       }
+        function sortPersones(person, param, order) {
+            person.sort(function (a, b) {
+                if (!order) {
+                    return a[param] > b[param] ? 1 : -1;
+                } else {
+                    return a[param] > b[param] ? -1 : 1;
+                }
+            });
+            return person;
+        }
         sortPersones(persons, 'name');
 
 
-//        array map
+        //        array map
         ["1", {}, null, undefined, "500", 700].map(function (num) {
             if (typeof num === "string") {
-            return parseInt(num)
-        }
-        return num;
+                return parseInt(num)
+            }
+            return num;
         });
-
 
 
         //array reduce
@@ -41,14 +40,13 @@
         ["0", 5, 3, "string", null].map(function (num) {
             if (typeof num === "number") {
 
-           nums.push(num)
-        }
+                nums.push(num)
+            }
         });
 
-        nums.reduce(function(previousValue, currentValue) {
+        nums.reduce(function (previousValue, currentValue) {
             return previousValue * currentValue;
         });
-
 
 
         var phone = {
@@ -59,23 +57,23 @@
         };
 
 
-    function map(object, func) {
-        for (var key in object) {
-        return func([key], object[key]);
-     }
-    }
 
 
-   debugger; map({name: "Иван", age: 17, surname: "F,hfvod"}, function(key, value){
-    var result = {};
-    result[key+"_"] = value + "$";
-    return result;
-    });
+        function map(object, func) {
+                 for (var key in object) {
+               func([key], object[key]);
+           }
+            }
+
+
+        var result = {};
+        map({name: "Иван", age: 17, surname: "F,hfvod"}, function (key, value) {
+            result[key + "_"] = value + "$";
+            return result;
+        });
 
 
     </script>
-
-
 
 
 </head>

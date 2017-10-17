@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        var p1 = {
+            name: 'name1',
+            fatherName: 'fa',
+            isMaried: true
+        };
+        var p2 = {
+            name: 'name2',
+            fatherName: 'fa2',
+            age: 30
+        };
+        var p3 = {
+            name: 'name3',
+            fatherName: 'fa3',
+            age: 30
+        };
+        var p4 = {
+            name: 'name4',
+            fatherName: 'fa4',
+            isMaried: false
+        };
+
+        var data = [p1, p2, p3, p4];
+        var unk = {};
+        var s = '<table>';
+        for (var i = 0; i < data.length; i++) {
+            var obj = data[i];
+        }
+            for (var key in obj) {
+                unk[key] = obj[key];
+            }
+            for (var keys in unk) {
+                s += ('<th>' + keys + '</th>');
+            }
+            for (var i = 0; i < data.length; i++) {
+            s += ('<tr>');
+            for (var key in obj){
+                s += ('<td>' + obj[key] || '-' + '</td>');
+            }
+            s += ('</tr>');
+        }
+        s += '</table>';
+        document.write(s);
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
