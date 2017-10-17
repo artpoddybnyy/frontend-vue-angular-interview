@@ -13,12 +13,13 @@
             {name: "Яков", age: 12}
         ];
 
-       function sortPersones(person, param) {
+       function sortPersones(person, param, order) {
            person.sort(function (a, b) {
-               if (a.param > b.param){
-               return 1;
-           }
-           return -1;
+               if (!order){
+                  return a[param] > b[param] ? 1: -1;
+               } else {
+                   return a[param] > b[param] ? -1: 1;
+               }
        });
            return person;
        }
@@ -58,17 +59,18 @@
         };
 
 
+    function map(object, func) {
+        for (var key in object) {
+        return func([key], object[key]);
+     }
+    }
 
 
-        function myMap(obj) {
-            var result = {};
-            for (var key in obj) {
-          result[key+"_"] = obj[key]+'$';
-          }
-         return result;
-        }
-
-
+   debugger; map({name: "Иван", age: 17, surname: "F,hfvod"}, function(key, value){
+    var result = {};
+    result[key+"_"] = value + "$";
+    return result;
+    });
 
 
     </script>
