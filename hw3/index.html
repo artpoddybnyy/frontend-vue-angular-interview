@@ -192,20 +192,22 @@
 
 
 //        blue belt
+              var piramstr= '';
                 for (let i = 0; i < 7; i++) {
                     for (let j = 0; j < 6 - i; j++) {
-                        document.write('.');
+                        piramstr+='.';
                     }
                     for (let k = 0; k <= i; k++) {
-                        document.write('#');
+                        piramstr+='#';
                     }
                     for (let h = 0; h < 6 - i; h++) {
-                        document.write('.');
+                        piramstr+='.';
                     }
-                    document.write('<br/>');
+                    piramstr+='\n';
                 }
+        console.log(piramstr);
 
-//black belt не работает
+        //black belt не работает
         var predictArray = [-1];
         var historyUser = [1,1,1,1];
         var userNum = prompt('Enter the number "0" or "1"');
