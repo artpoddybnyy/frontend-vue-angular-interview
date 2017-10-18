@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+
+
+        //makeSaver
+        var makeSaver = (function (a) {
+            var random =a();
+            return function rend () {
+                return random
+            };
+
+        });
+
+        var saver = makeSaver(Math.random);
+        var value1 = saver();
+        var value2 = saver();
+        console.log(value1 === value2);
+
+        //Final Countdown
+        for (var i = 5; i >0 ; i--) {
+            (function  (i) {
+                setTimeout(function(){
+                    console.log(i || 'Go Go');
+                }, 1000)
+            })(i)
+        }
+       
+
+
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
