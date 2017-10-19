@@ -6,42 +6,101 @@
 
 
     <script>
-
-        var obj = { foo: 1,
+        //        objectToPairs
+        var obj = {
+            foo: 1,
             bar: null,
             baz: undefined
         };
-       function objectToPairs(obj) {
-           var res = [];
-           for (var key in obj){
+
+        function objectToPairs(obj) {
+            var res = [];
+            for (var key in obj) {
                 res.push(key);
                 res.push(obj[key]);
             }
             return res;
-
         }
+
         objectToPairs(obj);
 
-
-        var objSplit = { foo: 1,
+        //objectSplit
+        var objSplit = {
+            foo: 1,
             bar: null,
             baz: undefined
         };
-function objectSplit(obj) {
-    var res = {};
-    var arrKeys = [];
-    var arrVal = [];
-    for (var key in obj){
-         arrKeys.push(key);
-       arrVal.push(obj[key]);
-    }
-    res.kesys = arrKeys;
-    res.values = arrVal;
-    return res;
-}
-        objectSplit(objSplit)
+
+        function objectSplit(obj) {
+            var res = {};
+            var arrKeys = [];
+            var arrVal = [];
+            for (var key in obj) {
+                arrKeys.push(key);
+                arrVal.push(obj[key]);
+            }
+            res.kesys = arrKeys;
+            res.values = arrVal;
+            return res;
+        }
+        objectSplit(objSplit);
 
 
+        //setPropertyBySelector
+        function setPropertyBySelector(selectors, attr, func) {
+            var s = document.querySelectorAll(selectors);
+            for (var i = 0; i < s.length; i++) {
+                s[i] = attr;
+
+            }
+            func ();
+        }
+
+        setPropertyBySelector("tr > li", 'onclick', function () {
+            alert('click on tr > li')
+        });
+        setPropertyBySelector("td", 'innerHTML', 'испортим все td на странице');
+        var someTree = {
+            tagName: "table", //html tag
+            subTags: [ //вложенные тэги
+                {
+                    tagName: "tr",
+                    subTags: [
+                        {
+                            tagName: "td",
+                            text: "some text"
+                        },
+                        {
+                            tagName: "td",
+                            text: "some text 2"
+                        }
+                    ]
+                }
+            ],
+            attrs:
+                {
+                    border: 1
+                }
+        };
+        for (var key in someTree) {
+            
+
+        }
+
+      function tableEditor(element, persons){
+              var table = document.createElement(element.tegName);
+                  var row = document.createElement(element.subTags);
+              for (var i = 0; i < row.length; i++) {
+                  for (var j = 0; j < row[i].length; j++) {
+                      var cell = document.createElement();
+                      cell.textContent = arr[i][j];
+                      row.appendChild(cell);
+                  }
+                  table.appendChild(row);
+              }
+              return table;
+
+        }
     </script>
 </head>
 <body>
