@@ -60,47 +60,7 @@
             alert('click on tr > li')
         });
         setPropertyBySelector("td", 'innerHTML', 'испортим все td на странице');
-        var someTree = {
-            tagName: "table", //html tag
-            subTags: [ //вложенные тэги
-                {
-                    tagName: "tr",
-                    subTags: [
-                        {
-                            tagName: "td",
-                            text: "some text"
-                        },
-                        {
-                            tagName: "td",
-                            text: "some text 2"
-                        }
-                    ]
-                }
-            ],
-            attrs:
-                {
-                    border: 1
-                }
-        };
-        for (var key in someTree) {
-            
-
-        }
-
-      function tableEditor(element, persons){
-              var table = document.createElement(element.tegName);
-                  var row = document.createElement(element.subTags);
-              for (var i = 0; i < row.length; i++) {
-                  for (var j = 0; j < row[i].length; j++) {
-                      var cell = document.createElement();
-                      cell.textContent = arr[i][j];
-                      row.appendChild(cell);
-                  }
-                  table.appendChild(row);
-              }
-              return table;
-
-        }
+       
     </script>
 </head>
 <body>
