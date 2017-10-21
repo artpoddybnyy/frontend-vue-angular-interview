@@ -5,16 +5,30 @@
     <title>Title</title>
 
     <script>
-
+        //        makeProfileTimer
+        function doSomething() {
+            for (var i = 0; i < 100000000; i++) {
+            }
+        }
+        function makeProfileTimer() {
+            var a = performance.now();
+            return function () {
+                var b = performance.now();
+                var c = b-a;
+                return  c;
+            }
+        }
+        var timer = makeProfileTimer();
+        doSomething();
+        alert(timer());
 
 
         //makeSaver
-        var makeSaver = (function (a) {
-            var random =a();
-            return function rend () {
+        var makeSaver = (function (math) {
+            var random = math();
+            return function rend() {
                 return random
             };
-
         });
 
         var saver = makeSaver(Math.random);
@@ -23,16 +37,13 @@
         console.log(value1 === value2);
 
         //Final Countdown
-        for (var i = 5; i >0 ; i--) {
-            (function  (i) {
-                setTimeout(function(){
+        for (var i = 5; i > 0; i--) {
+            (function (i) {
+                setTimeout(function () {
                     console.log(i || 'Go Go');
                 }, 1000)
             })(i)
         }
-       
-
-
 
 
     </script>

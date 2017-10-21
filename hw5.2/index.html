@@ -29,7 +29,7 @@
         //        array map
         ["1", {}, null, undefined, "500", 700].map(function (num) {
             if (typeof num === "string") {
-                return parseInt(num)
+                return +num
             }
             return num;
         });
@@ -56,23 +56,33 @@
             color: "black"
         };
 
+        function filter(object, func) {
+
+        }
 
 
-
-        function map(object, func) {
-                 for (var key in object) {
-               func([key], object[key]);
-           }
-            }
+        filter(phone, function(key, value){
+            return (key == "color" || value == 2);
+        });
 
 
-        var result = {};
-        map({name: "Иван", age: 17, surname: "F,hfvod"}, function (key, value) {
+//        object map
+        map({name: "Иван", age: 17}, function (key, value) {
+            var result = {};
             result[key + "_"] = value + "$";
             return result;
         });
 
-
+        function map(object, func) {
+            var newObj = {};
+            for (var key in object) {
+                var res = func([key], object[key]);
+                for (var key in res) {
+                    newObj[key] = res[key]
+                }
+            }
+            return newObj
+        }
     </script>
 
 
