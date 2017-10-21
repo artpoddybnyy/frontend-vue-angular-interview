@@ -48,7 +48,7 @@
             return previousValue * currentValue;
         });
 
-
+        //        object filter
         var phone = {
             brand: "meizu",
             model: "m2",
@@ -57,16 +57,21 @@
         };
 
         function filter(object, func) {
-
+            var newObj = {};
+            for (var key in object) {
+                if (func([key], object[key])) {
+                    newObj[key] = object[key]
+                }
+            }
+            return newObj;
         }
 
-
-        filter(phone, function(key, value){
+        filter(phone, function (key, value) {
             return (key == "color" || value == 2);
         });
 
 
-//        object map
+        //        object map
         map({name: "Иван", age: 17}, function (key, value) {
             var result = {};
             result[key + "_"] = value + "$";
