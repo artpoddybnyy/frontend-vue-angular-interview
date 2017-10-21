@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <script>
+        //        objectToPairs
+        var obj = {
+            foo: 1,
+            bar: null,
+            baz: undefined
+        };
+
+        function objectToPairs(obj) {
+            var res = [];
+            for (var key in obj) {
+                res.push(key);
+                res.push(obj[key]);
+            }
+            return res;
+        }
+
+        objectToPairs(obj);
+
+        //objectSplit
+        var objSplit = {
+            foo: 1,
+            bar: null,
+            baz: undefined
+        };
+
+        function objectSplit(obj) {
+            var res = {};
+            var arrKeys = [];
+            var arrVal = [];
+            for (var key in obj) {
+                arrKeys.push(key);
+                arrVal.push(obj[key]);
+            }
+            res.kesys = arrKeys;
+            res.values = arrVal;
+            return res;
+        }
+        objectSplit(objSplit);
+
+
+        //setPropertyBySelector
+        function setPropertyBySelector(selectors, attr, func) {
+            var s = document.querySelectorAll(selectors);
+            for (var i = 0; i < s.length; i++) {
+                s[i] = attr;
+
+            }
+            func ();
+        }
+
+        setPropertyBySelector("tr > li", 'onclick', function () {
+            alert('click on tr > li')
+        });
+        setPropertyBySelector("td", 'innerHTML', 'испортим все td на странице');
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>
