@@ -103,11 +103,11 @@
             };
 
             this.addChild = function (newChild) {
-                var isDuplicate = true;
+                var isDuplicate = false;
                 childrens.filter(function (child) {
-                    isDuplicate = child !== newChild;
+                    isDuplicate = child === newChild;
                 });
-                if (newChild && typeof newChild === 'object' && newChild.age + 15 <= ts.age && isDuplicate) {
+                if (newChild && typeof newChild === 'object' && newChild.age + 15 <= ts.age && !isDuplicate) {
                     childrens.push(newChild);
                 } else {
                     console.error('Error');
