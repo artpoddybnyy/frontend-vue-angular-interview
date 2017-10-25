@@ -104,14 +104,18 @@
 
             this.addChild = function (newChild) {
                 var isDuplicate = false;
-                childrens.filter(function (child) {
-                    isDuplicate = child === newChild;
-                });
+
+                for (var i = 0; i < childrens.length; i++) {
+                    isDuplicate = childrens[i] === newChild;
+                    if (isDuplicate) {
+                        return console.error('Такой объект уже есть');
+                    }
+                }
+
                 if (newChild && typeof newChild === 'object' && newChild.age + 15 <= ts.age && !isDuplicate) {
                     childrens.push(newChild);
                 } else {
-                    console.error('Error');
-                    return;
+                    return console.error('Разница в возрасте маленькая');
                 }
                 return childrens.length;
             };
