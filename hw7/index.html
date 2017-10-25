@@ -5,6 +5,23 @@
     <title>Title</title>
 
     <script>
+        //makeCounter
+        function makeCounter() {
+            var a = 0;
+            return function () {
+                return a++;
+            }
+        }
+        var counter = makeCounter();
+        var otherCntr = makeCounter();
+        counter();
+        counter();
+        otherCntr();
+        otherCntr();
+        otherCntr();
+        counter();
+
+
         //        makeProfileTimer
         function doSomething() {
             for (var i = 0; i < 100000000; i++) {
@@ -14,8 +31,8 @@
             var a = performance.now();
             return function () {
                 var b = performance.now();
-                var c = b-a;
-                return  c;
+                var c = b - a;
+                return c;
             }
         }
         var timer = makeProfileTimer();
@@ -37,12 +54,12 @@
         console.log(value1 === value2);
 
         //Final Countdown
-        (function (){
+        (function () {
             var count = 6;
-            setTimeout(countDown,1000);
-            function countDown(){
+            setTimeout(countDown, 1000);
+            function countDown() {
                 count--;
-                count > 0 ? setTimeout(countDown,1000) && console.log(count) : console.log('Go go go');
+                count > 0 ? setTimeout(countDown, 1000) && console.log(count) : console.log('Go go go');
             }
         })();
     </script>

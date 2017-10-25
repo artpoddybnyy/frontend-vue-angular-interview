@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        function Person(name, surname, age, sex, salary, married) {
+            var ts = this;
+            this.name = name;
+            this.surname = surname;
+            this.age = age;
+            this.sex = sex;
+            this.salary = salary;
+            this.married = married;
+            var father;
+            var childrens = [];
+
+            this.setName = function (newName) {
+                if (newName && typeof newName === 'string') {
+                    name = newName;
+                }
+                return name
+            };
+
+            this.getName = function () {
+                return name
+            };
+
+            this.setSureName = function (newSureName) {
+                if (newSureName && typeof newSureName === 'string') {
+                    surname = newSureName;
+                }
+                return surname
+            };
+
+            this.getSureName = function () {
+                return surname
+            };
+
+            this.setAge = function (newAge) {
+                newAge = +newAge;
+                if (!isNaN(newAge) && Number.isInteger(newAge) && (newAge > 0) && (newAge < 100)) {
+                    age = newAge
+                }
+                return age
+            };
+
+            this.getAge = function () {
+                return age
+            };
+            this.setSex = function (newSex) {
+                if (newSex && typeof newSex === 'string') {
+                    sex = newSex;
+                }
+                return sex
+            };
+
+            this.getSex = function () {
+                return sex
+            };
+
+            this.setSalary = function (newSalary) {
+                salary = +newSalary;
+                if (!isNaN(newSalary) && typeof newSalary === 'number') {
+                    salary = newSalary;
+                }
+                return salary
+            };
+
+            this.getSlary = function () {
+                return salary
+            };
+
+            this.setMarried = function (newMarried) {
+                if (newMarried && typeof newMarried === 'boolean') {
+                    married = newMarried;
+                }
+                return married
+            };
+
+            this.getMarried = function () {
+                return married
+            };
+
+            this.setFather = function (newFather) {
+                if (newFather && typeof newFather === 'object') {
+                    father = newFather;
+                }
+                return married
+            };
+
+            this.getFather = function () {
+                return father
+            };
+
+            this.getFatherName = function () {
+                if (sex === 'male') {
+                    return father.name + 'ovich'
+                } else {
+                    return father.name + 'ovna'
+                }
+            };
+
+            this.addChild = function (newChild) {
+                var isDuplicate = true;
+                childrens.filter(function (child) {
+                    isDuplicate = child !== newChild;
+                });
+                if (newChild && typeof newChild === 'object' && newChild.age + 15 <= ts.age && isDuplicate) {
+                    childrens.push(newChild);
+                } else {
+                    console.error('Error');
+                    return;
+                }
+                return childrens.length;
+            };
+
+            this.getChilds = function () {
+                return childrens;
+            };
+        }
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>
