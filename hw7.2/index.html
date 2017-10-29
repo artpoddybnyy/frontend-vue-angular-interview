@@ -87,7 +87,6 @@
                 if (newFather && typeof newFather === 'object') {
                     father = newFather;
                 }
-                return married
             };
 
             this.getFather = function () {
@@ -103,16 +102,13 @@
             };
 
             this.addChild = function (newChild) {
-                var isDuplicate = false;
-
                 for (var i = 0; i < childrens.length; i++) {
-                    isDuplicate = childrens[i] === newChild;
-                    if (isDuplicate) {
+                    if (childrens[i] === newChild) {
                         return console.error('Такой объект уже есть');
                     }
                 }
 
-                if (newChild && typeof newChild === 'object' && newChild.age + 15 <= ts.age && !isDuplicate) {
+                if (newChild && typeof newChild === 'object' && newChild.age + 15 <= ts.age) {
                     childrens.push(newChild);
                 } else {
                     return console.error('Разница в возрасте маленькая');
