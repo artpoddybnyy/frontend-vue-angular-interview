@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #scrl {
+            margin:  0 auto;
+            border: none;
+            padding: 5px;
+            font: 24px/36px sans-serif;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        button  {
+            position: fixed;
+            background-color: aqua;
+        }
+        button:nth-child(2){
+            top: 0;
+           left: 50%;
+        }
+        button:nth-child(3){
+            top: 22%;
+            right: 38%;
+        }
+        button:nth-child(4){
+              top: 20%;
+          }
+        button:last-child{
+            left: 50%;
+            bottom: 50%;
+        }
+    </style>
+
+
+
+</head>
+<body>
+<div id="scrl">
+    <img src="http://www.hardware.zp.ua/wp-content/uploads/2015/05/1389446210160.png" alt="">
+</div>
+
+</body>
+<script>
+    var element = document.getElementById('scrl');
+    function scroll(element, px) {
+
+        var up = document.createElement('BUTTON');
+        up.innerHTML = 'Up';
+        up.setAttribute('id', 'up');
+        var right = document.createElement('BUTTON');
+        right.innerHTML = 'Right';
+        right.setAttribute('id', 'right');
+        var left = document.createElement('BUTTON');
+        left.innerHTML = 'Left';
+        left.setAttribute('id', 'left');
+        var down = document.createElement('BUTTON');
+        down.innerHTML = 'Down';
+        down.setAttribute('id', 'down');
+
+        element.appendChild(up);
+        element.appendChild(right);
+        element.appendChild(left);
+        element.appendChild(down);
+
+        var btnD = document.getElementById('down');
+        btnD.addEventListener('click', function () {
+            element.scrollBy(0, px);
+        });
+
+        var btnR = document.getElementById('right');
+        btnR.addEventListener('click', function () {
+            element.scrollBy(px, 0);
+        });
+
+        var btnUp = document.getElementById('up');
+        btnUp.addEventListener('click', function () {
+            element.scrollBy(0, -px);
+        });
+
+        var btnL = document.getElementById('left');
+        btnL.addEventListener('click', function () {
+            element.scrollBy(-px, 0);
+        });
+
+    }
+    scroll(element, 50);
+
+</script>
+</html>
