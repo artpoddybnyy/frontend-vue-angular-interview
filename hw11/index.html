@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select name="" id="select">
+    <option>Выбирите страну</option>
+</select>
+<select name="" id="select-city">
+    <option>Выбирите город</option>
+</select>
+
+<h3 id="result"></h3>
+
+</body>
+
+<script>
+    const request = new XMLHttpRequest();
+    const url = 'https://raw.githubusercontent.com/David-Haim/CountriesToCitiesJSON/master/countriesToCities.json';
+    const weatherByCity = "https://query.yahooapis.com/v1/public/yql?" + 'q=' + encodeURIComponent("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='CITYNAME')") + '&format=json';
+    request.open('GET', url, true);
+
+    request.onreadystatechange = function () {
+        if (request.readyState !== 4) {
+            return;
+        }
+        if (request.status === 200) {
+        let responseText = request.responseText;
+          get(responseText);
+        }
+    };
+    request.send();
+
+
+    function get(responseText) {
+        let select = document.getElementById('select');
+        let selectCity = document.getElementById('select-city');
+        let result = document.getElementById('result');
+        let data = JSON.parse(responseText);
+        Object.keys(data).map(key => {
+            let opt = document.createElement('option');
+            opt.innerHTML = key;
+            select.appendChild(opt);
+        });
+
+        select.addEventListener("change", () => {
+            let cityes = data[select.value];
+            selectCity.innerHTML = null;
+            Object.values(cityes).map(val => {
+                let opt = document.createElement('option');
+                opt.innerHTML = val;
+                selectCity.appendChild(opt);
+            });
+        });
+        selectCity.addEventListener("change", () => {
+            let city = selectCity.value;
+            request.open('GET', weatherByCity.replace("CITYNAME", city), true);
+            console.log(city);
+            request.onreadystatechange = () => {
+                if (request.readyState !== 4) {
+                    return;
+                }
+                if (request.status === 200) {
+                    let responseText = request.responseText;
+                    let res = JSON.parse(responseText);
+                    console.log(res.query.results.channel);
+                    result.innerHTML = JSON.stringify(res.query.results.channel);
+                }
+            };
+            request.send();
+        });
+    }
+</script>
+</html>
