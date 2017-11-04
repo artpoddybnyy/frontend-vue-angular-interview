@@ -25,10 +25,9 @@
     });
 
 
-    let counter = 0;
+    let index = 0;
     setInterval(() => {
         let res = null;
-        let index = 0;
         let request = new XMLHttpRequest();
         request.open("POST", url, true);
         request.onreadystatechange = () => {
@@ -39,27 +38,23 @@
                 let responseText = request.responseText;
                 res = JSON.parse(responseText);
                 index = res.nextMessageId;
-                if (index !== counter) {
-                    render(res.data.slice(counter, index));
-                }
-                counter = index;
+                    render(res.data);
             }
         };
         request.send(JSON.stringify({func: "getMessages", messageId: index}));
     }, 2000);
 
-    let messageBody = document.getElementById('messageBody');
-
-    function render(index) {
-        console.log('массив в методе рендер', index);
-        for (let i = 0; i < index.length; i++) {
+    let messageBody = document.getElementById('message-body');
+    function render(data) {
+        console.log('массив в методе рендер', data);
+        for (let i = 0; i < data.length; i++) {
             let div = document.createElement('div');
             let d = document.createElement('span');
             let m = document.createElement('span');
 
             div.innerText = '--------------------------------------';
-            d.innerText = index[i].nick + '-';
-            m.innerText = index[i].message;
+            d.innerText = data[i].nick + '-';
+            m.innerText = data[i].message;
 
             messageBody.insertBefore(m, messageBody.childNodes[0]);
             messageBody.insertBefore(d, messageBody.childNodes[0]);
