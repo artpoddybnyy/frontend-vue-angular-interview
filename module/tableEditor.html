@@ -51,7 +51,6 @@
             for (let j = 0; j < col.length; j++) {
                 let tabCell = tr.insertCell(-1);
                 tabCell.innerHTML = persons[i][col[j]] || '-';
-                let input = document.createElement('input');
                 let editingTd;
                 tabCell.addEventListener('click', (event)=> {
                     let target = event.target;
