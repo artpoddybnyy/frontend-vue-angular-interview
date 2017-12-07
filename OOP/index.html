@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    class Figure {
+        constructor (x, y, figureColor){
+            this.x = x;
+            this.y = y;
+            this.figureColor = figureColor;
+        }
+        draw(){
+            console.log(`draw from parent x =  ${this.x} y = ${this.y}  color ${this.figureColor}`);
+
+        }
+    }
+
+    class Line extends Figure{
+        constructor(x1, y1, x2, y2, figureColor) {
+            super(x1, y1, figureColor);
+            this.x2 = x2;
+            this.y2 = y2;
+        }
+        draw(){
+            super.draw();
+            console.log(`draw in Line x2 = ${this.x2} y2 = ${this.y2}`);
+        }
+
+    }
+    class Circle extends Figure{
+        constructor (x , y, r, figureColor){
+            super(x, y, figureColor);
+            this.r = r;
+        }
+        draw(){
+            super.draw();
+            console.log(`draw in Circle r = ${this.r}`);
+        }
+    }
+
+    class Rect extends Figure{
+        constructor (x , y, w, h, figureColor){
+            super(x, y,figureColor);
+            this.w = w;
+            this.h = h;
+        }
+        draw(){
+            super.draw();
+            console.log(`draw in Rect w = ${this.w}  h = ${this.h}`);
+        }
+    }
+
+    let line = new Line(50, 250, 200, 200, 'red');
+    let circle = new Circle(120, 120, 50, 'green');
+    let rect = new Rect(260, 130, 60, 120, 'blue');
+
+    line.draw();
+    circle.draw();
+    rect.draw();
+
+</script>
+</body>
+</html>
