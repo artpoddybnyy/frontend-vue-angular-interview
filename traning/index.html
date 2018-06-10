@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            position: relative
+        }
+
+        .animate {
+            width: 100px;
+            height: 700px;
+            background-color: red;
+            position: relative;
+
+        }
+
+        .animated-out {
+            animation-name: example2;
+            animation-duration: 0.5s;
+        }
+
+        .animated-in {
+            animation-name: example;
+            animation-duration: 0.5s;
+            left: -100px;
+        }
+
+        @keyframes example2 {
+            0% {
+                left: -100px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+
+        @keyframes example {
+            0% {
+                left: 0;
+            }
+            /*25%  {left:200px; top:0;}*/
+            /*50%  {left:200px; top:200px;}*/
+            /*75%  {left:0; top:200px;}*/
+            100% {
+                left: -100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="qq" class="animate"></div>
+
+<button id="click">click</button>
+
+<!--<script src="index.js"></script>-->
+
+
+<script>
+    let elementById = document.getElementById('click');
+    let elementById2 = document.getElementById('qq');
+
+    elementById.addEventListener('click', function () {
+        let array = new Array(...elementById2.classList);
+
+        if (array.indexOf('animated-in') > -1) {
+            elementById2.classList.remove('animated-in')
+            return elementById2.classList.add('animated-out')
+        }
+        elementById2.classList.remove('animated-out')
+        return elementById2.classList.add('animated-in')
+
+    })
+
+</script>
+</body>
+</html>
