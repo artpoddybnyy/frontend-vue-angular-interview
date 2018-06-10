@@ -31,6 +31,13 @@ for (var j = 0; j < 3; j++) {
 /** get only unique elements of array */
 console.log([... new Set([1,2,1,2,3,1,3])]);
 
+/** transfor multi array to array */
+
+function flatten(arr) {
+  return arr.reduce(function (flat, toFlatten) {
+    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  }, []);
+}
 
 /** create array copy */
 var a = [1,1,1,1];
