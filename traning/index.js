@@ -84,6 +84,13 @@ grizzly.grow();
 /** this regex check if string contain at lis on char from interval from a to z */
 /([a-z])(?!.*\1)/g.test('aaa');
 
+ function bind(func, context) { 
+  return function () { 
+    func.call(context);
+  } 
+};
+
+
 /** собеседование
  1 . имеет ли дж доступ к файловой системе, модно ли взять файл и че то с ним сделать ?
  - нет не имеет, только  через браузер inpyt type file
