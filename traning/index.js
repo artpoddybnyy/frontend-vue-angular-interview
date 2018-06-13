@@ -27,6 +27,15 @@ setTimeout(() => console.log(j));
 for (var j = 0; j < 3; j++) {
     (j => setTimeout(() => console.log(j), 300))(j);
 }
+/** timer with setTimeout */
+ function f(i) {
+        if (i < 0 ) return;
+        setTimeout(()=> f(i), 1000);
+        console.log(i);
+        i--;
+    }
+    f(5)
+
 
 /** get only unique elements of array */
 console.log([... new Set([1,2,1,2,3,1,3])]);
