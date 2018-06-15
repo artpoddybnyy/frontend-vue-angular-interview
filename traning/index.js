@@ -100,6 +100,82 @@ grizzly.grow();
 };
 
 
+
+/** iterate by object Tree structure */
+
+
+    var obj = {
+        a: {
+            a: {
+                a: {
+                    a: 'aaaaa'
+                }
+            }
+        },
+        b: {
+            b: {
+                b: {
+                    b: 'bbbbbb'
+                }
+            }
+        }
+    };
+
+    function eachRecursiveByObject(obj) {
+        for (let k in obj) {
+            if (typeof obj[k] === "object" && obj[k] !== null) {
+                console.log(obj[k]);
+                eachRecursive(obj[k]);
+            }
+            else {
+                console.log(obj[k]);
+            }
+        }
+
+    }
+    eachRecursive(obj)
+
+/** iterate by array of objects Tree structure */
+
+     var obj = [{
+        a: [{
+            a:[{
+                a: 'aaaaaa'
+            }]
+        }]
+    },
+        {a: [{
+            a:[{
+                a:'bbbbbbb'
+            }]
+            }]
+
+    }]
+
+
+    function eachRecursiveByArrayOfObjs(obj) {
+        for (let i = 0; i < obj.length; i++) {
+           if (Array.isArray(obj[i])) {
+               eachRecursive(obj[i])
+           } else {
+               for (let k in obj[i]) {
+                   if (typeof obj[i][k] === "object" && obj[i][k] !== null) {
+                       console.log(obj[i][k]);
+                       eachRecursive(obj[i][k]);
+                   }
+                   else {
+                       console.log(obj[i][k]);
+                   }
+               }
+           }
+
+        }
+
+
+    }
+    eachRecursive(obj)
+
+
 /** собеседование
  1 . имеет ли дж доступ к файловой системе, модно ли взять файл и че то с ним сделать ?
  - нет не имеет, только  через браузер inpyt type file
