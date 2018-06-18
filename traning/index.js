@@ -40,6 +40,19 @@ for (var j = 0; j < 3; j++) {
 /** get only unique elements of array */
 console.log([... new Set([1,2,1,2,3,1,3])]);
 
+/** check if string palindrom */
+
+function isPalindrom(text) {
+        if (text.length <= 1) {
+            return true
+        }
+        if (text.charAt(0) !== text.charAt(text.length - 1)) {
+            return false
+        }
+        return isPalindrom(text.substr(1, text.length - 2))
+    }
+    isPalindrom('text')
+
 /** transfor multi array to array */
 
 function flatten(arr) {
