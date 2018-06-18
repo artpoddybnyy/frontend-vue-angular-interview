@@ -138,7 +138,7 @@ grizzly.grow();
         for (let k in obj) {
             if (typeof obj[k] === "object" && obj[k] !== null) {
                 console.log(obj[k]);
-                eachRecursive(obj[k]);
+                eachRecursiveByObject(obj[k]);
             }
             else {
                 console.log(obj[k]);
@@ -169,12 +169,12 @@ grizzly.grow();
     function eachRecursiveByArrayOfObjs(obj) {
         for (let i = 0; i < obj.length; i++) {
            if (Array.isArray(obj[i])) {
-               eachRecursive(obj[i])
+               eachRecursiveByArrayOfObjs(obj[i])
            } else {
                for (let k in obj[i]) {
                    if (typeof obj[i][k] === "object" && obj[i][k] !== null) {
                        console.log(obj[i][k]);
-                       eachRecursive(obj[i][k]);
+                       eachRecursiveByArrayOfObjs(obj[i][k]);
                    }
                    else {
                        console.log(obj[i][k]);
@@ -186,7 +186,7 @@ grizzly.grow();
 
 
     }
-    eachRecursive(obj)
+    eachRecursiveByArrayOfObjs(obj)
 
 /** finde longest_palindrome in string */
  function is_Palindrome(str1) {
