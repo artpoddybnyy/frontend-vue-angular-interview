@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .nav-icon1 {
+            width: 30px;
+            height: 22px;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+
+            cursor: pointer;
+        }
+        #nav-icon1 span {
+            display: block;
+            position: absolute;
+            height: 4px;
+            width: 100%;
+            background: #d3531a;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .3s ease-in-out;
+        }
+        #nav-icon1 span:nth-child(1) {
+            top: 0;
+        }
+
+        #nav-icon1 span:nth-child(2) {
+            top: 10px;
+        }
+
+        #nav-icon1 span:nth-child(3) {
+            top: 20px;
+        }
+        #nav-icon1.open span:nth-child(1) {
+            top: 10px;
+            transform: rotate(135deg);
+        }
+        #nav-icon1.open span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+
+        #nav-icon1.open span:nth-child(3) {
+            top: 10px;
+            transform: rotate(-135deg);
+        }
+        .container {
+            min-height: inherit;
+            display: flex;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .menu {
+            width: 15%;
+            min-height: inherit;
+            background-color: #79ffcb;
+            transition:  1s;
+            /*animation-name: example;*/
+            animation-name: example;
+        }
+
+        .hide-menu {
+            width: 0;
+
+        }
+
+        .content {
+            background-color: violet;
+            min-height: inherit;
+            width: 85%;
+            transition: width 1s;
+
+        }
+        .stretch-content {
+            width: 100%;
+            margin-left: auto;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div id="div" class="menu"></div>
+<div id="content"  class="content"></div>
+</div>
+
+<div id="nav-icon1" class="nav-icon1 open">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<script>
+
+    document.getElementById('nav-icon1').addEventListener('click', function () {
+        let div = document.getElementById('div')
+        let butter = document.getElementById('nav-icon1')
+        let content = document.getElementById('content')
+
+        if (div.classList.contains('hide-menu')) {
+            butter.classList.add("open");
+            content.classList.remove("stretch-content");
+            return div.classList.remove("hide-menu");
+
+        }
+        div.classList.add("hide-menu");
+        butter.classList.remove("open");
+        content.classList.add("stretch-content");
+    })
+
+</script>
+
+</body>
+</html>
