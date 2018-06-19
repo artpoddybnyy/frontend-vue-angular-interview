@@ -5,6 +5,22 @@ let number = Math.min.apply(null, arr);
 console.log(number);
 
 
+/** carring and clouser */
+
+    let carri = function() {
+            let sum = 0;
+        return function(num) {
+             return sum += num
+
+        };
+    };
+
+    let sum = carri();
+
+    sum(1);
+    sum(2);
+    sum(4);
+    
 /** create array from string */
 var from = Array.from('String strong');
 console.log(from);
@@ -19,7 +35,7 @@ var obj = {
 };
 obj.f1()();
 
-/** this setTimeout can se variable j because hosting */
+/** this setTimeout can see variable j because hosting */
 
 setTimeout(() => console.log(j));
 
