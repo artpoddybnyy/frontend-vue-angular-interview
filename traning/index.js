@@ -56,6 +56,17 @@ for (var j = 0; j < 3; j++) {
 /** get only unique elements of array */
 console.log([... new Set([1,2,1,2,3,1,3])]);
 
+
+
+var kvArray = [["key1", "value1"], ["key2", "value2"]];
+// Используйте конструктор Map для преобразования двумерных массивов в ассоциативные
+var myMap = new Map(kvArray);
+
+myMap.get("key1"); // вернёт "value1"
+
+
+
+
 /** check if string palindrom */
 
 function isPalindrom(text) {
