@@ -5,6 +5,11 @@ let number = Math.min.apply(null, arr);
 console.log(number);
 
 
+/** get from array elements which eaqule to pattern in regex */
+var filteredArray = ['1', '233', '211']
+filteredArray.filter(item => /[1]/g.test(item))
+
+
 /** carring and clouser */
 
     let carri = function() {
