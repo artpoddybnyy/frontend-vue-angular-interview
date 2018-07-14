@@ -251,6 +251,44 @@ grizzly.grow();
     }
 
 
+    /** Promises examples */
+
+    function addString(input, daley){
+        return new Promise((resolve, reject) => {
+            setTimeout(() => reject(new Error('Errrrrrrrr')), daley)
+        })
+    }
+
+/** обработка ошибок для  async await*/
+ function handleError(promise) {
+    return promise.then(data => [null, data]).catch(err => [err]);
+}
+
+
+async function exec() {
+   let daley = Math.floor(Math.random() * 10000) + 1
+    console.log(daley);
+   let daley2 = Math.floor(Math.random() * 10000) + 1
+   console.log(daley2);
+
+
+   let [err, res] = await handleError(addString('A', daley))
+    console.log(err, res);
+
+    let [err2, res2] = await handleError(addString('B', daley2))
+    console.log(err2, res2);
+    /** можно обработать и так*/
+    let  res3 = await addString('A', daley).catch(err => console.log(err))
+    let  res4 = await addString('B', daley).catch(err => console.log(err))
+
+}
+/** обработка ошибок через чейнинг */
+addString('AA', 1000)
+    .catch(err => console.log(err))
+    .then(() => addString('AA', 1000))
+    .catch(err => console.log(err))
+
+
 /** собеседование
  1 . имеет ли дж доступ к файловой системе, модно ли взять файл и че то с ним сделать ?
  - нет не имеет, только  через браузер inpyt type file
