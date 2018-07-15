@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #elem2 {
+            color: blueviolet;
+            font-size: 3rem;
+        }
+
+        #elem3 {
+            color: cornflowerblue;
+            font-size: 5rem;
+        }
+        #elem5 {
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<input id="elem-in"/>
+
+<div id="elem2"></div>
+<div id="elem3"></div>
+
+
+<button id="elem5">inc++</button>
+<h1 id="elem4"></h1>
+<script>
+
+    class Observable {
+        constructor() {
+            this.observers = [];
+            this.subjectState = null
+        }
+
+        addObserver(Observer) {
+            this.observers.push(Observer);
+            console.log('Observer added', Observer)
+        }
+
+        getState() {
+            return this.subjectState;
+        }
+
+        setState(state) {
+            this.subjectState = state;
+            this.notify()
+
+        }
+
+        removeObserver(Observer) {
+            for (var i in this.observers)
+                if (this.observers[i] === Observer)
+                    this.observers.splice(i, 1)
+        }
+
+        /** оповещение всех подписчиков */
+        notify() {
+            for (let i in this.observers) {
+                this.observers[i].update(this);
+            }
+        }
+    }
+
+    class Observer {
+        constructor() {
+            this.observerState = null;
+        }
+
+        /** обновляем состоянеие наблюдателя  */
+        update(Observable) {
+            this.observerState = Observable.getState();
+            console.log('Observer new state: ' + this.observerState)
+        }
+
+        getState() {
+            return this.observerState
+        }
+    }
+
+    let subject = new Observable();
+
+    let observer1 = new Observer();
+    let observer2 = new Observer();
+
+    subject.addObserver(observer1);
+    subject.addObserver(observer2);
+
+    document.getElementById('elem-in').addEventListener('keyup', function (e) {
+        subject.setState(e.target.value)
+    });
+
+    observer1.update = function (Observable) {
+        document.getElementById('elem2').innerText = Observable.getState();
+    };
+
+    observer2.update = function (Observable) {
+        document.getElementById('elem3').innerText = Observable.getState();
+    };
+
+
+    let subjectInc = new Observable();
+    let observerInc = new Observer();
+    subjectInc.addObserver(observerInc)
+
+    let incVal = 0;
+    document.getElementById('elem5').addEventListener('click', function () {
+        incVal++;
+        subjectInc.setState(incVal)
+    });
+
+    observerInc.update = function (Observable) {
+        document.getElementById('elem4').innerText = Observable.getState()
+    }
+</script>
+</body>
+</html>
