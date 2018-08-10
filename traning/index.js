@@ -61,6 +61,10 @@ for (var j = 0; j < 3; j++) {
 /** get only unique elements of array */
 console.log([... new Set([1,2,1,2,3,1,3])]);
 
+/** get only unique elements of array of objects */
+var a =[{a:10}, {a:10}, {a:10}, {a:15}]
+        var w = new Map()
+        a.forEach(elem => w.set(elem.a, elem))
 
 
 var kvArray = [["key1", "value1"], ["key2", "value2"]];
