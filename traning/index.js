@@ -9,6 +9,8 @@ console.log(number);
 var filteredArray = ['1', '233', '211']
 filteredArray.filter(item => /[1]/g.test(item))
 
+/** regexp for validation strin if string contain sumbols unsuitable to regexp return false */
+ /^[\w]*$/g.test('ад')
 
 /** carring and clouser */
 
