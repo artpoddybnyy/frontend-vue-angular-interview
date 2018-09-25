@@ -59,6 +59,11 @@ for (var j = 0; j < 3; j++) {
     }
     f(5)
 
+    /** loop for 5 seconds */
+var start = new Date().getTime() + 5000
+ for (var i = new Date().getTime();  i < start; i++) {
+  console.log('1111');
+}
 
 /** get only unique elements of array */
 console.log([... new Set([1,2,1,2,3,1,3])]);
