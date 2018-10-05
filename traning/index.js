@@ -302,23 +302,33 @@ addString('AA', 1000)
 
 /** promise imetation */
 
-    function f(res) {
-        this.resultThen = null
-        this.resultCatch = null
+function MyPromise(cb) {
+        this.resultThen = []
+        this.resultCatch = []
+        this.prevRes = null
+        this.prevCath = null
 
-        res(function (data) {
-            this.resultThen(data)
-        }.bind(this),
+        cb(function (data) {
+            setTimeout(() => {
+                for (cb of this.resultThen) {
+                    this.prevRes = cb(this.prevRes || data)
+                }
+            })
+            }.bind(this),
             function (data) {
-            this.resultCatch(data)
-        }.bind(this))
+            setTimeout(() => {
+                for (cb of this.resultCatch) {
+                    this.prevCath = this.resultCatch(this.prevCath || data)
+                }
+            })
+            }.bind(this))
 
-        this.then = function (then){
-           this.resultThen = then
-           return this
+        this.then = function (cb) {
+            this.resultThen.push(cb)
+            return this
         }
-        this.catch =  function(cb) {
-          this.resultCatch = cb
+        this.catch = function (cb) {
+            this.resultCatch.push(cb)
             return this
         }
     }
