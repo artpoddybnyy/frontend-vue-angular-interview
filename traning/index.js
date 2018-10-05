@@ -300,6 +300,31 @@ addString('AA', 1000)
     .catch(err => console.log(err))
 
 
+/** promise imetation */
+
+    function f(res) {
+        this.resultThen = null
+        this.resultCatch = null
+
+        res(function (data) {
+            this.resultThen(data)
+        }.bind(this),
+            function (data) {
+            this.resultCatch(data)
+        }.bind(this))
+
+        this.then = function (then){
+           this.resultThen = then
+           return this
+        }
+        this.catch =  function(cb) {
+          this.resultCatch = cb
+            return this
+        }
+    }
+
+
+
 /** собеседование
  1 . имеет ли дж доступ к файловой системе, модно ли взять файл и че то с ним сделать ?
  - нет не имеет, только  через браузер inpyt type file
