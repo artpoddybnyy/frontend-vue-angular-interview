@@ -1,0 +1,41 @@
+
+    class MyPromise {
+
+        constructor(cb) {
+            this.resolve = this.resolved.bind(this)
+            this.reject = this.rejected.bind(this)
+
+            cb(this.resolve, this.reject)
+            this.resultThen = []
+            this.resultCatch = null
+            this.prevRes = null
+
+        }
+
+        async resolved(data) {
+            for (let cb of this.resultThen) {
+                this.prevRes = cb(this.prevRes || data)
+                data = undefined
+            }
+        }
+
+        async rejected(data) {
+            try {
+                throw new Error('error')
+            } catch (e) {
+                const rejRes = this.resultCatch(data || e)
+                this.resolve(rejRes)
+            }
+        }
+
+        then(cb) {
+            this.resultThen.push(cb)
+            return this
+        }
+
+        catch(cb) {
+            this.resultCatch = cb
+            this.resultThen.length = 0
+            return this
+        }
+    }

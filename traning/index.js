@@ -300,41 +300,6 @@ addString('AA', 1000)
     .catch(err => console.log(err))
 
 
-/** promise imetation */
-
-function MyPromise(cb) {
-        this.resultThen = []
-        this.resultCatch = []
-        this.prevRes = null
-        this.prevCath = null
-
-        cb(function (data) {
-            setTimeout(() => {
-                for (cb of this.resultThen) {
-                    this.prevRes = cb(this.prevRes || data)
-                }
-            })
-            }.bind(this),
-            function (data) {
-            setTimeout(() => {
-                for (cb of this.resultCatch) {
-                    this.prevCath = this.resultCatch(this.prevCath || data)
-                }
-            })
-            }.bind(this))
-
-        this.then = function (cb) {
-            this.resultThen.push(cb)
-            return this
-        }
-        this.catch = function (cb) {
-            this.resultCatch.push(cb)
-            return this
-        }
-    }
-
-
-
 /** собеседование
  1 . имеет ли дж доступ к файловой системе, модно ли взять файл и че то с ним сделать ?
  - нет не имеет, только  через браузер inpyt type file
