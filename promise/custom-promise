@@ -1,5 +1,4 @@
-
-    class MyPromise {
+  class MyPromise {
 
         constructor(cb) {
             this.resolve = this.resolved.bind(this)
@@ -12,20 +11,25 @@
 
         }
 
-        async resolved(data) {
-            for (let cb of this.resultThen) {
-                this.prevRes = cb(this.prevRes || data)
-                data = undefined
-            }
+        resolved(data) {
+            setTimeout(() => {
+                try {
+                    for (let cb of this.resultThen) {
+                        this.prevRes = cb(this.prevRes || data)
+                        data = undefined
+                    }
+                } catch (e) {
+                    this.reject(e);
+                    this.resultThen.length = 0
+                }
+            })
         }
 
-        async rejected(data) {
-            try {
-                throw new Error('error')
-            } catch (e) {
+        rejected(data) {
+            setTimeout(() => {
                 const rejRes = this.resultCatch(data || e)
                 this.resolve(rejRes)
-            }
+            })
         }
 
         then(cb) {
@@ -35,7 +39,6 @@
 
         catch(cb) {
             this.resultCatch = cb
-            this.resultThen.length = 0
             return this
         }
     }
