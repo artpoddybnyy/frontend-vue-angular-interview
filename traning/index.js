@@ -9,6 +9,8 @@ console.log(number);
 var filteredArray = ['1', '233', '211']
 filteredArray.filter(item => /[1]/g.test(item))
 
+/** regexp for validation strin if string contain sumbols unsuitable to regexp return false */
+ /^[\w]*$/g.test('ад')
 
 /** carring and clouser */
 
@@ -57,10 +59,19 @@ for (var j = 0; j < 3; j++) {
     }
     f(5)
 
+    /** loop for 5 seconds */
+var start = new Date().getTime() + 5000
+ for (var i = new Date().getTime();  i < start; i++) {
+  console.log('1111');
+}
 
 /** get only unique elements of array */
 console.log([... new Set([1,2,1,2,3,1,3])]);
 
+/** get only unique elements of array of objects */
+var a =[{a:10}, {a:10}, {a:10}, {a:15}]
+        var w = new Map()
+        a.forEach(elem => w.set(elem.a, elem))
 
 
 var kvArray = [["key1", "value1"], ["key2", "value2"]];
