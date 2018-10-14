@@ -155,6 +155,10 @@ grizzly.grow();
   } 
 };
 
+/** check type of object */
+isObject = function(a) {
+    return (!!a) && (a.constructor === Object);
+};
 
 
 /** iterate by object Tree structure */
