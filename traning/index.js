@@ -2,7 +2,9 @@
 /** example of apply, inject this Math class to get min value of array */
 var arr = [1,22,33];
 let number = Math.min.apply(null, arr);
+let number2 = Math.min(...arr);
 console.log(number);
+console.log(number2);
 
 
 /** get from array elements which eaqule to pattern in regex */
@@ -27,7 +29,7 @@ filteredArray.filter(item => /[1]/g.test(item))
     sum(1);
     sum(2);
     sum(4);
-    
+
 /** create array from string */
 var from = Array.from('String strong');
 console.log(from);
@@ -149,10 +151,10 @@ grizzly.grow();
 /** this regex check if string contain at lis on char from interval from a to z */
 /([a-z])(?!.*\1)/g.test('aaa');
 
- function bind(func, context) { 
-  return function () { 
+ function bind(func, context) {
+  return function () {
     func.call(context);
-  } 
+  }
 };
 
 /** check type of object */
