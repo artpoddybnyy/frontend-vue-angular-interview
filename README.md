@@ -93,6 +93,7 @@ const result2 = getSumm(initialArr, function (currentItem, item) { return curren
 ```
 `result = [4,8,12,16]`
 `result2 = 20`
+
 3. Написать реализацию функции `sum()` что бы в результате работы кода получилось число 7
  ```javascript
        sum(1);
