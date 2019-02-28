@@ -306,6 +306,35 @@ addString('AA', 1000)
     .catch(err => console.log(err))
 
 
+
+
+/** generator as async await*/
+
+function async(makeGenerator) {
+    return (function () {
+        var generator = makeGenerator.apply(this, arguments);
+
+        function handle(result){
+
+            if (result.done) return Promise.resolve(result.value);
+
+            return Promise.resolve(result.value).then(function (res){
+                return handle(generator.next(res));
+            }, function (err){
+                return handle(generator.throw(err));
+            });
+        }
+
+        try {
+            return handle(generator.next());
+        } catch (ex) {
+            return Promise.reject(ex);
+        }
+    })()
+}
+
+
+
 /** собеседование
  1 . имеет ли дж доступ к файловой системе, модно ли взять файл и че то с ним сделать ?
  - нет не имеет, только  через браузер inpyt type file
