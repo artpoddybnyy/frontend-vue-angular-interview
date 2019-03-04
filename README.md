@@ -60,12 +60,16 @@ Object.defineProperty(obj, 'key', {
 9. $refs, $listeners, $attrs
 10. События `@event` и модификаторы событий **.self . stop . once**
 11. Если сделать computed свойство стрелочной функцией, что будет 
-12. Что такое ssr, nuxt.js, что такое гидрация в nuxt
+12. Vue.Observable({})
+14. Опция **provide** и **inject**
+15. 
+13. Что такое ssr, nuxt.js, что такое гидрация в nuxt
 # Vuex интевью
 1. Как брать данные из store, что такое кеширование геттеров
 2. Как изменять состояние хранилища, ассинхронное митирование состояния (**rootState**, **rootGetters**)
 3. Модули Vuex, как взять state из одного модуля в другом как менять состояние одного из другого `commit('module/mutation', data, {root:true})`
 4. Плагины Vuex, подписка и отслеживаниеа мутаций
+5. Динамическая загрузка **Vuex** модулей `(this.$store.registerModule("notifications", state))`
 # Vue  router интевью
 1. Как передать props в компонент роутера
 2. Разница между **$router.push** и **$router.replace**, что такое **$router.go(-1)**
