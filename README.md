@@ -38,7 +38,8 @@ Object.defineProperty(obj, 'key', {
 3. Где лучше хранить данные на стороне клиента (indexDB, local storage)
 4. Как синхронизировать две вкладки, как слушать **localstorage** (на одно и тойже вкладке не будет слушать)
 5. Какие события можно слушать на input, отличе **blur** и **focusout**(у первого нет дальнейшего всплытия) 
-6. Какую анимацию и как использовать  **transition**, **animation**
+6. Какую анимацию и как использовать  **transition**, **animation** (в чем отличие), можно ли остановить анимацию `animation-play-state:paused;`
+* Что такое **transform**, **transform-origin**
 7. Как отследить анимацию **transition**, **animation** (начало, окончание)
 8. Тег `<pre>`, что он делает
 9. Тег `<sript>`, **defer** (откладывает на конец загрузки документа) и  **async** (документ не ожидает загрузку скрипта) атрибуты 
@@ -46,24 +47,30 @@ Object.defineProperty(obj, 'key', {
 11. Как выровнять елемнт в контейнере по вертикали и горизонтали
 12. Как открыть почтовый клиент `<a href="mailto:vlad@htmlbook.ru?subject=Вопрос по HTML">`
 13. Приоритет индексирования анимации и **transform** z-index
+14. Что такое **Web Workers API**
+15. Как закрыть окно JS'ом
+15. Как отображать картинки base64 в `background-image: url("")`, `<img />` `data:image/png;base64, код`
+16. Что такое пассивное прослушивание событий
+17. Что такое и как анимировать **svg**
 # Vue интевью
 1. Как работает цикл компонента, где компонент не доступен, цикл **updated** и **nextTick** (updated не гарантирует что дочерние компоненты буду отрисованы)
 2. Как работает реактивность, методы массива которые сохраняют реактивность, как исправить потерю реативности **Vue.$set()**, как сделать свойство не реактивным Object.freez()
 3. Дерективы и фильтры, ползовательские дерективы (хуки **bind inserted update componentUpdated unbind**) и фильтры,
 плагины **(Vue.use(plugin))** 
-4. Props (type, default, required, validator), прокидывание данных обратно (какой способ предпочтительнее: cb, emmit)
+4. Деректива `v-bind`, что такое `props` (type, default, required, validator), прокидывание данных обратно (какой способ предпочтительнее: cb, emmit), как синхранизировать props
 5. Компоненты `<component>`, `<keep-alive>`+ 2 хука(activated, deactivated), `<transition>&<transition-group>` + хуки + аттрибуты 
 * миксины, приоритет миксина и компонент
 6. Слоты, для чего нужны
 7. Асинхронная  загрузка компонентов в роуте и локально в компоненте, дефолтные компоненты при асинхронной загрузке компонентов
 8. Функциональные компоненты
 9. $refs, $listeners, $attrs
-10. События `@event` и модификаторы событий **.self . stop . once**
+10. События `@event` и модификаторы событий **.native .self . stop . once**, денамические имена событий
 11. Если сделать computed свойство стрелочной функцией, что будет 
 12. Vue.Observable({})
 14. Опция **provide** и **inject**
-15. 
-13. Что такое ssr, nuxt.js, что такое гидрация в nuxt
+15. v-model, модификаторы **.trim .lazy .number**
+16. Что такое ssr, nuxt.js, что такое гидрация в nuxt
+17. Как работает virtual DOM
 # Vuex интевью
 1. Как брать данные из store, что такое кеширование геттеров
 2. Как изменять состояние хранилища, ассинхронное митирование состояния (**rootState**, **rootGetters**)
@@ -98,15 +105,26 @@ beforeRouteUpdate (to, from, next) {
 2. Написать реализацию следующих методов
 ```javascript
 const initialArr = [2,4,6,8]
+
 const result = multipleMap(initialArr, function (item) { return item * 2 })
+result === [4,8,12,16]
+
 const result2 = getSumm(initialArr, function (currentItem, item) { return currentItem + item })
+result2 === 20
     
 const arrSymbols = ['aa', 'vv', 'ssa']
 const resSymbols = getSymbols(arr, elem => elem.includes('a'))
+resSymbols === ["aa", "ssa"]
+   
+   var arrs = [
+        function (param) { return param + 2 },
+        function (param) { return param - 2 },
+        function (param) { return param * 2 },
+        function (param) { return param / 2 }
+        ]
+result === [5, 3, 10, 5]
 ```
-`result = [4,8,12,16]`
-`result2 = 20`
-`resSymbols = ["aa", "ssa"]`
+
 
 3. Написать реализацию функции `sum()` что бы в результате работы кода получилось число 7
  ```javascript
