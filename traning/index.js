@@ -311,7 +311,6 @@ addString('AA', 1000)
 /** generator as async await*/
 
 function async(makeGenerator) {
-    return (function () {
         var generator = makeGenerator.apply(this, arguments);
 
         function handle(result){
@@ -330,7 +329,6 @@ function async(makeGenerator) {
         } catch (ex) {
             return Promise.reject(ex);
         }
-    })()
 }
 
 

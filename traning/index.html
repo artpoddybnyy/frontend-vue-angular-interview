@@ -12,10 +12,13 @@
 
         .animate {
             width: 100px;
-            height: 700px;
+            height: 70px;
             background-color: red;
             position: relative;
-
+            margin: 0 auto;
+            z-index: -911;
+            transition: transform .3s;
+            transform: translateY(0);
         }
 
         .animated-out {
@@ -24,58 +27,120 @@
         }
 
         .animated-in {
-            animation-name: example;
-            animation-duration: 0.5s;
-            left: -100px;
+            /*animation-name: example;*/
+            /*animation-duration: 0.5s;*/
+            /*top: -100px;*/
+            transform: translateY(-100%);
         }
 
         @keyframes example2 {
             0% {
-                left: -100px;
+                top: -100px;
             }
             100% {
-                left: 0;
+                top: 0;
             }
         }
 
         @keyframes example {
             0% {
-                left: 0;
+                top: 0;
             }
             /*25%  {left:200px; top:0;}*/
             /*50%  {left:200px; top:200px;}*/
             /*75%  {left:0; top:200px;}*/
             100% {
-                left: -100px;
+                top: -100px;
             }
+        }
+        .header {
+            width: 100%;
+            height: 200px;
+            background-color: darkgreen;
+            z-index: 111;
         }
     </style>
 </head>
 <body>
-
+<div class="header"></div>
 <div id="qq" class="animate"></div>
+
 
 <button id="click">click</button>
 
 <!--<script src="index.js"></script>-->
 
+<!--<div onclick="clickParam.call(this, 11)">click here</div>-->
 
 <script>
-    let elementById = document.getElementById('click');
-    let elementById2 = document.getElementById('qq');
+    // let elementById = document.getElementById('click');
+    // let elementById2 = document.getElementById('qq');
+    //
+    // elementById.addEventListener('click', function () {
+    //     let array = new Array(...elementById2.classList);
+    //
+    //     if (array.indexOf('animated-in') > -1) {
+    //         elementById2.classList.remove('animated-in')
+    //         return elementById2.classList.add('animated-out')
+    //     }
+    //     elementById2.classList.remove('animated-out')
+    //     return elementById2.classList.add('animated-in')
+    //
+    // })
 
-    elementById.addEventListener('click', function () {
-        let array = new Array(...elementById2.classList);
+    function async(makeGenerator) {
 
-        if (array.indexOf('animated-in') > -1) {
-            elementById2.classList.remove('animated-in')
-            return elementById2.classList.add('animated-out')
-        }
-        elementById2.classList.remove('animated-out')
-        return elementById2.classList.add('animated-in')
+            var generator = makeGenerator.apply(this, arguments);
 
-    })
+            function handle(result){
 
+                if (result.done) return Promise.resolve(result.value);
+
+                return Promise.resolve(result.value).then(function (res){
+                    return handle(generator.next(res));
+                }, function (err){
+                    return handle(generator.throw(err));
+                });
+            }
+
+            try {
+                return handle(generator.next());
+            } catch (ex) {
+                return Promise.reject(ex);
+            }
+    }
+
+
+
+    function getData() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve('asdasd')
+            }, 1111)
+        })
+    }
+    // async(function* () {
+    //     var a = yield getData()
+    //     console.log(a)
+    //     var z = yield getData()
+    //     console.log(z)
+    //
+    // })
+    // console.log(all);
+</script>
+
+<script type="module">
+    import * as all from './module-file.js'
+
+
+    var arrs = [function (param) { return param + 2 },
+        function (param) { return param - 2 },
+        function (param) { return param * 2 },
+        function (param) { return param / 2 }
+        ]
+        var initial = [3, 5, 5, 10]
+    var res = arrs.map((cb, index) => { return cb(initial[index]) })
+debugger
 </script>
 </body>
 </html>

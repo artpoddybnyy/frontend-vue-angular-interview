@@ -1,7 +1,6 @@
 module.exports = {
     title: 'Frontend Vue developer questions',
     themeConfig: {
-        header: false,
         sidebar: [
             ['/js-interview/', 'Базовые вопросы JS'],
             ['/js-advanced-interview/', 'Продвинутые вопросы JS'],
@@ -9,8 +8,8 @@ module.exports = {
             ['/vue-interview/', 'Базовые вопросы Vue'],
             ['/vue-router-interview/', 'Базовые вопросы Vue Router'],
             ['/vuex-interview/', 'Базовые вопросы Vuex'],
+            ['/vue-advanced-interview/', 'Продвинутые вопросы Vue'],
         ]
     },
     base: '/frontend-vue-interview/'
-
 }

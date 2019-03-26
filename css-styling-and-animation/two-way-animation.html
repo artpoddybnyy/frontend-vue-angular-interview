@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+        .element {
+            padding: 3.5em 2em;
+            width: 6em;
+            background: #b3e888;
+            text-align: center;
+           transition: transform 2s;
+        }
+
+        .element:hover{
+            animation: pulse 500ms 1s infinite;
+            animation-fill-mode: forwards;
+            transform: rotate(45deg);
+        }
+
+
+
+        @keyframes pulse {
+            from {
+
+            }
+            to {
+                transform: scale(2);
+                animation-play-state: paused;
+            }
+        }
+
+        .css-mine {
+            margin-top: 2em;
+            clear: both;
+        }
+
+        body {
+            margin: 1.5em;
+        }
+    </style>
+</head>
+<body>
+<p class="element">Hover me!</p>
+
+<p class="css-mine">
+
+</p>
+</body>
+</html>
