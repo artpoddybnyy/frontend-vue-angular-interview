@@ -1,15 +1,29 @@
 module.exports = {
-    title: 'Frontend Vue developer questions',
+    title: 'Frontend Vue/Angular questions',
+    plugins: [
+        [
+            'vuepress-plugin-container',
+            {
+                type: 'answer',
+                defaultTitle: 'Answer',
+                before: `<div class="answer"></div>`
+              }
+        ],
+    ],
     themeConfig: {
         sidebar: [
-            ['/js-interview/', 'Базовые вопросы JS'],
-            ['/js-advanced-interview/', 'Продвинутые вопросы JS'],
-            ['/js-practice-tasks/', 'Практические задания JS'],
-            ['/vue-interview/', 'Базовые вопросы Vue'],
-            ['/vue-router-interview/', 'Базовые вопросы Vue Router'],
-            ['/vuex-interview/', 'Базовые вопросы Vuex'],
-            ['/vue-advanced-interview/', 'Продвинутые вопросы Vue'],
-        ]
+            ['/js-questions/', 'JS questions'],
+            ['/type-script-questions/', 'TypeScript questions'],
+            ['/js-advanced-questions/', 'Advances JS questions'],
+            ['/js-practice-tasks/', 'Practical JS tasks'],
+            ['/vue-questions/', 'Vue questions'],
+            ['/vue-router-questions/', 'Vue Router questions'],
+            ['/vuex-questions/', 'Vuex questions'],
+            ['/vue-advanced-questions/', 'Advances Vue questions'],
+            ['/angular-questions/', 'Angular questions'],
+            ['/angular-router-questions/', 'Angular router questions']
+        ],
+
     },
     base: '/frontend-vue-interview/'
 }

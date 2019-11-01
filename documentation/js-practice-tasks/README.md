@@ -21,6 +21,22 @@ resSymbols === ["aa", "ssa"]
         function (param) { return param / 2 }
         ]
 result === [5, 3, 10, 5]
+
+   var resSort = mySort([4, 2, 7, 11, 1, 11])
+
+   function mySort (arrIn) {
+       var max
+       return arrIn.map(() => {
+           max = Math.max(...arrIn)
+           arrIn[arrIn.indexOf(max)] = null
+           return max
+       })
+
+   }
+resSort === [11, 11, 7, 4, 2, 1]
+
+var res = replacer('str string ing', '$')
+res === '*** ****** ***'
 ```
 
 
@@ -82,4 +98,5 @@ async(function* () {
     var res2 = yield getAsyncData()
        //some ations
 })
-``` 
+```
+7. Написать функцию 
