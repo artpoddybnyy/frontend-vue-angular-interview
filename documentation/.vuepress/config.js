@@ -25,5 +25,8 @@ module.exports = {
         ],
 
     },
-    base: '/frontend-vue-interview/'
+    base: '/frontend-vue-interview/',
+    head: [
+        ['link', { rel: 'icon', href: '/vue_vs_angular.png' }]
+    ]
 }
