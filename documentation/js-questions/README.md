@@ -38,4 +38,4 @@ import {str} from 'pathToModule'
 ::: tip
 **typeof**, **instanceof**, **new RegExp().constructor === RegExp**
 :::
-
+24. Как работать с url нативно - `URLSearchParams`

@@ -16,6 +16,7 @@ module.exports = {
             ['/type-script-questions/', 'TypeScript questions'],
             ['/js-advanced-questions/', 'Advances JS questions'],
             ['/js-practice-tasks/', 'Practical JS tasks'],
+            ['/css-questions/', 'CSS questions'],
             ['/vue-questions/', 'Vue questions'],
             ['/vue-router-questions/', 'Vue Router questions'],
             ['/vuex-questions/', 'Vuex questions'],

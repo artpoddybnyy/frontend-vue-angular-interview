@@ -9,6 +9,12 @@
 `@ContentChild` и `@ContentChildren`  берем контент html, который пробрасываеться в компонент - ngAfterContentInit<br/>
 See [Answer](https://tyapk.ru/blog/post/viewchildren-viewchild-contentchildren-and-contentchild)
 :::
+Что такое `{ static: false }` y `ViewChildren` и `ContentChildren`.
+::: answer
+Если флаг static имеет значение true, Angular попытается найти элементы при инициализации компонента. Это работает, только если они не находятся в структурной директиве. 
+При использовании static: false разрешение выполняется после инициализации или обновления представления.
+ng update попытается автоматически ввести правильное значение, если это окажется невозможно, он добавит комментарий с TODO.
+:::
 3. `ElementRef`, `TemplateRef`, `ViewContainerRef` `Renderer2` 
 ::: answer
 `ElementRef` - верхнеуровяя абстракця, которая содержит в себе ссылку на «нативный» DOM-элемент<br/>
@@ -21,7 +27,8 @@ See [Answer](https://tyapk.ru/blog/post/viewchildren-viewchild-contentchildren-a
 4. `ComponentFactoryResolver`
 5. Директивы `ng-template`, `ngTemplateOutlet`, `ngComponentOutlet` и `ng-container`
  ::: answer
- Aнгуляр не вставляет внутрь `<ng-template>`, а добавляет его сразу после.<br/>
+ `ngTemplateOutlet`  - для динамического отображения компонентов `<ng-template>`. Так же можно передать данные наврх<br/>
+ Aнгуляр не вставляет внутрь `<ng-template>`, а добавляет его сразу после. Изначально `ng-template` ничего не рендери. Используеться в связке с `ngIf`, `ngSwitch` <br/>
  Для вставки элементов в DOM удобно использовать `<ng-container>` элемен.<br/>
  `ngComponentOutlet` - для динамического отображения компонентов (нужно добавить в `entryComponents`) [see](https://stackblitz.com/edit/angular-ng-component-outlet-example)<br/>
  [see also](http://nataliesmith.ca/blog/ngtemplate-ngcontainer-ngcontent)
@@ -31,4 +38,5 @@ See [Answer](https://tyapk.ru/blog/post/viewchildren-viewchild-contentchildren-a
 AsyncPipe отслеживает объекты Observable и Promise и возвращает полученное из этих объектов значение. 
 :::
 7. Reactive Forms `FormControl` `FormGroup`  `FormBuilder` `Validators`<br/>
-8.
+8. Структурные директивы изменяют структуру DOM с помощью добавления или удаления html-элементов. `ngIf`, `ngSwitch` и `ngFor`.
+9. Анимация

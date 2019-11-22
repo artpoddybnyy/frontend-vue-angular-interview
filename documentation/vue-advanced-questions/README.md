@@ -52,4 +52,18 @@ var app = new Vue({
 setTimeout(() => app.$mount('#app'), 1000)
 ```
 :::
-
+4. Что можно расказать об отрибуте `key` 
+:::tip
+Перемещает дом елементы
+можно изменить ключь и можно <br>
+перезапуск анимации
+```html
+<transition>
+  <span :key="text">{{ text }}</span>
+</transition>
+```
+перерендерить компонент
+```html
+<component :key="text"></component>
+```
+:::
