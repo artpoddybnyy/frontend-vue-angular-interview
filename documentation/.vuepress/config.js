@@ -13,7 +13,6 @@ module.exports = {
     themeConfig: {
         sidebar: [
             ['/js-questions/', 'JS questions'],
-            ['/type-script-questions/', 'TypeScript questions'],
             ['/js-advanced-questions/', 'Advances JS questions'],
             ['/js-practice-tasks/', 'Practical JS tasks'],
             ['/css-questions/', 'CSS questions'],
@@ -21,6 +20,8 @@ module.exports = {
             ['/vue-router-questions/', 'Vue Router questions'],
             ['/vuex-questions/', 'Vuex questions'],
             ['/vue-advanced-questions/', 'Advances Vue questions'],
+            ['/type-script-questions/', 'TypeScript questions'],
+            ['/rxjs-questions/', 'RXJS questions'],
             ['/angular-questions/', 'Angular questions'],
             ['/angular-router-questions/', 'Angular router questions']
         ],

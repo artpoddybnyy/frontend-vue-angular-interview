@@ -1,5 +1,10 @@
 # TS questions
 1. Что такое Question mark & exclamation mark
+::: answer
+Знакоп вопроса помечается опциональные параметры, 
+восклицательным обозночает что параметр не можить быть
+`null` or `undefined` 
+:::
 2. Типы данных `Tuple`, `never` `union` `enum`
 ::: answer
 `Tuple` - var person: [number, string, boolean] = [1, "Steve", true];<br/>
@@ -18,22 +23,20 @@ let employeeCode = code as number;
 `undefined`
 :::
 5. Модификаторы доступа, какой по умолчанию, что за `protected`
+::: answer
+`public` доступен при создании инстанса класса
+`private` не доступен при создании инстанса класса
+::: 
 6. Что означает `<T extends SomeTipe>`, зачем нужны `generic`
+::: answer
+```javascript
+interface Lengthwise {
+	length: number;
+}
 
-# RxJS questions
-1. Что за объекты типа `Subject`
-::: answer
-**BehaviorSubject** хранит в себе последнее отправленное им значение. Так, каждому новому обработчику в момент регистрации (вызов subscribe()) будет отправлено это значение.
-Начальное значение задается в момент создания RxJS BehaviorSubject.<br/>
-**ReplaySubject** способны хранить заданное количество последних значений, которое задается при создании объекта.<br/>
-**AsyncSubject** "потребителям" передается только последнее значение объекта и только, когда он завершит свое выполнение (вызов complete()).
-:::
-2. метод `pipe(), pipeable operators
-::: answer
-Методу RxJS pipe() передаются только те операторы, которые принимают Observable и возвращают Observable. 
-Они находятся в 'rxjs/operators' и называются pipeable operators
-:::
-3. Что создает `Observable`
-::: answer
-**of, from, fromEvent, interval** и **new Observable**
-:::
+function getLength<T extends Lengthwise>(arg: T): number {
+	return arg.length;
+}
+```
+функцмя `getLength` может принимать только тип у которого есть `length` параметр
+::: 

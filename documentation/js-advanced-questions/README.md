@@ -43,3 +43,32 @@ Object.defineProperty(obj, 'key', {
 ```javascript
 object[object['name'] = 1] = 'name'
 ```
+13. Как отправить файл на сервер?. Прочитать файл с помощью `FileReader` в нужный формат и отправить или `FormData`
+```javascript
+  let data = new FormData()
+  data.append('file', files[0])
+  axios.put('/endpoint/url', data, config)
+```
+как отслеживать процесс выгрузки файла на сервер?
+```javascript
+  var xhr = new XMLHttpRequest();
+  xhr.upload.onprogress = function(event) {
+    log(event.loaded + ' / ' + event.total);
+  }
+```
+14. Какие типы ответа можно просит у сервера 
+:::answer
+""	- DOMString (this is the default value)
+"arraybuffer" -ArrayBuffer
+"blob" -	Blob
+"document" -	Document
+"json" -	JSON
+"text" -	DOMString
+:::
+15. `XMLHttpRequest.abort()` что возможно делать?
+16. Что такое тепезированные массивы
+17. Что такое мемоизация (кеширование)
+::: answer
+Сохранение результатов выполнения функций для предотвращения повторных вычислений
+:::
+
