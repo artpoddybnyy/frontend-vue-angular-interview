@@ -10,10 +10,12 @@ module.exports = {
               }
         ],
     ],
+    theme: 'default-prefers-color-scheme',
     themeConfig: {
+        defaultTheme: 'dark',
         sidebar: [
             ['/js-questions/', 'JS questions'],
-            ['/js-advanced-questions/', 'Advances JS questions'],
+            ['/js-advanced-questions/', 'Advanced JS questions'],
             ['/js-practice-tasks/', 'Practical JS tasks'],
             ['/css-questions/', 'CSS questions'],
             ['/vue-questions/', 'Vue questions'],
@@ -23,12 +25,18 @@ module.exports = {
             ['/type-script-questions/', 'TypeScript questions'],
             ['/rxjs-questions/', 'RXJS questions'],
             ['/angular-questions/', 'Angular questions'],
-            ['/angular-router-questions/', 'Angular router questions']
+            ['/angular-router-questions/', 'Angular router questions'],
+            ['/ng-rx-questions/', 'NgRx questions']
         ],
-
     },
-    base: '/frontend-vue-interview/',
+    base: '/frontend-vue-angular-interview/',
     head: [
-        ['link', { rel: 'icon', href: '/vue_vs_angular.png' }]
-    ]
+        ['link', { rel: 'icon', href: 'https://i.imgur.com/oUGrUo9.jpg' }]
+    ],
+    postcss: {
+        plugins: [
+            require('css-prefers-color-scheme/postcss'),
+            require('autoprefixer')
+        ]
+    }
 }

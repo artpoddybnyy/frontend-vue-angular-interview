@@ -1,4 +1,3 @@
-# Frontend developer interview questions for Vue/Angular developers
-![An image](./.vuepress/public/vue_vs_angular.png)
+![An image](https://i.imgur.com/oUGrUo9.jpg)
 
 ### [Start](./js-questions) ask!

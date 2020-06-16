@@ -6,14 +6,17 @@
     "docs:build": "vuepress build documentation"
   },
   "dependencies": {
-    "vue": "^2.6.10",
+    "vue": "^2.6.11",
     "vuepress-plugin-container": "^2.1.0",
+    "vuepress-theme-default-prefers-color-scheme": "^1.0.9",
     "webpack-dev-middleware": "^3.6.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-service": "^3.4.0",
-    "vue-template-compiler": "^2.6.10",
-    "vuepress": "^1.2.0"
+    "autoprefixer": "^9.8.0",
+    "css-prefers-color-scheme": "^4.0.0",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.0"
   }
 }

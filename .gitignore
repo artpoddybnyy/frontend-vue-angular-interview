@@ -1,5 +1,4 @@
 /documentation/.vuepress/dist/
 .idea
-package-lock.json
 /node_modules/
 /yarn.lock
