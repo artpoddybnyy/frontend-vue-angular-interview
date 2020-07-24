@@ -44,5 +44,48 @@ inp.addEventListener('keyup', function (ev) {
     takeWhile(() => false) // пока не false
 );
 ```
-так же https://github.com/ngneat/until-destroy
+так же либа [until-destroy](https://github.com/ngneat/until-destroy)
 :::
+7. `Cold` и `Hot` **Observables**
+::: tip
+`Cold` все подписки на которые получят свой ответ (данные отдаються самим **Observable**)
+`of`, `from`, `range`, `interval` and `timer` каждому подписчику дают свои данные <br/>
+`Hot` все подписки на которые получят один и тотже ответ (данные отдаються из вне, к примеру вызов `next()`)
+:::
+8. `zip`, `forkJoin` vs `combineLatest` vs `merge` vs `withLatestFrom`
+::: tip
+`zip` - это как `Promise.all([])` ожидает пока все отработают хотя бы один раз паралельно и затем выдает значения, 
+что бы событие происходило должно отработать всегда все **Observable**
+ <br/><br/>
+`merge` - мерджит много **Observable** в один поток/подписчик<br/><br/>
+`forkJoin` - как `zip` только выдает последнее значение, отрабатывает 1 раз, ждет когда все завершаться
+`combineLatest` как `яшз` только отрабатывает когда хотя бы один из переданых **Observable** эммитит значение и получает значение от каждого
+`withLatestFrom` как `combineLatest` только тригерром являеться главный поток так как это пайп оператор выдает последнее значение из основного и вторичного
+:::
+9. какие есть мердж операторы и в чем разница?
+::: tip
+`merge` - вмердживает **Observable** в выполнение текущего **Observable** не блокирует выполнение основного потока <br><br>
+`mergeMap` - так как и `merge` вмердживает и выполняет **Observable** блокируя основной поток пока не завершиться возвращаемый 
+**Observable**. Продолжает выполнять все что ниже по цепочке в пайпе `mergeMap(()=> timer(2000))` следующий оператор выполниться через 2 секунды. 
+Можно контролировать количество создаваемых `mergeMap` **Observable** гланым потоком. У `concatMap` 1 по умолчанию
+```typescript
+mergeMap(project: function: Observable, resultSelector: function: any, concurrent: number): Observable
+```
+`switchMap` - так же как и `mergeMap`только ***завершает на следующей итерации*** этот возвращенный **Observable**. 
+`switchMap(() => interval(4000)), map((v)=> {console.log(v)})` интервал начнеться заново<br><br>
+`concatMap` так же как и `mergeMap` только ставит в очередь `of(2000, 1000); ...  concatMap(val => delay(val))`
+Выполнит сначала задержку в 2 секунды затем в 1 в отличии от `mergeMap`. Новая итерация не начнеться пока не выполниться возвращаемый **Observable**. <br><br>
+`mergeScan` - так же как и `mergeMap` только есть аккамулируемое значение которое возвращаеться где то ниже в пайпах, 
+не завершает на следующей итерации а продолжает с аккамулируемым значением
+```typescript
+mergeScan(acc => {
+            return interval(1000).pipe(
+                scan((a, _) => ++a, 0),
+                map(val => val + acc),
+                takeUntil(mouseUp$) // нунужно завершить
+            );
+    
+        }, 0)
+```
+:::
+10. 

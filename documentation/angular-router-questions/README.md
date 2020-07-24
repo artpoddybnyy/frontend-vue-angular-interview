@@ -52,10 +52,28 @@ ngOnInit() {
 ```typescript
 this.router.navigate(['profile', 3], {
   queryParams: { id: 3 },
-  fragment: 'address'
+  fragment: 'address' //http://localhost:4200/profile?id=3#address
 })
 ```
 :::
-
-
-
+5. Цикл роута 
+ ::: tip
+ `NavigationStart` <br>
+ `RoutesRecognized` - cопоставление URL-адресов и редиректы<br>
+ `GuardsCheckStart` и `GuardsCheckEnd`<br>
+ `ResolveStart` `ResolveEnd` <br>
+ `ActivationStart`, `ActivationEnd`, `ChildActivationStart`, `ChildActivationEnd`<br>
+ `Updating` - последний шаг в навигационном цикле 
+ ```typescript
+ class MyService {
+   constructor(public router: Router, logger: Logger) {
+     router.events.pipe(
+        filter((e: Event): e is RouterEvent => e instanceof RouterEvent)
+     ).subscribe((e: RouterEvent) => {
+       logger.log(e.id, e.url);
+     });
+   }
+ }
+ ```
+ :::
+ 
