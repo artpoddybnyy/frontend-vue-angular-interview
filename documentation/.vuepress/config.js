@@ -26,7 +26,8 @@ module.exports = {
             ['/rxjs-questions/', 'RXJS questions'],
             ['/angular-questions/', 'Angular questions'],
             ['/angular-router-questions/', 'Angular router questions'],
-            ['/ng-rx-questions/', 'NgRx questions']
+            ['/ng-rx-questions/', 'NgRx questions'],
+            ['/angular-tips-approaches/', 'Angular approaches of developing']
         ],
     },
     base: '/frontend-vue-angular-interview/',

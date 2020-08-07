@@ -76,4 +76,9 @@ this.router.navigate(['profile', 3], {
  }
  ```
  :::
- 
+6. `Guards` vs `Resolves`
+ ::: tip
+ Пока все `Guards` не выполняться `Resolves` не начнут выполняться даже если это Parent и Child, 
+ сначала все `Guards` в Parent потом в Child а потом `Resolves`
+ `Guards`, `Resolves` выполняеться как `Promise.all` если они на одном маршруте
+ :::
